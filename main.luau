@@ -22,6 +22,7 @@ local function flatten_offsets(t, result, visited)
     visited[t] = true
     
     for k, v in pairs(t) do
+        if string.find(k, "%s") then continue end
         if typeof(v) == "table" then
             flatten_offsets(v, result, visited)
         else
